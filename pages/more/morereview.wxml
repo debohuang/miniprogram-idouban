@@ -1,6 +1,6 @@
 <import src="../../template/start.wxml" />
 <view class='reviews'>
-  <view class='reviews-item' wx:for='{{reviews}}' wx:key='{{index}}'>
+  <view class='reviews-item' wx:for='{{reviews}}' wx:key='index'>
     <image class='avatar' src='{{item.author.avatar}}' mode='widthFix'></image>
     <view class='content'>
       <view class='content-name'>

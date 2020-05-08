@@ -44,12 +44,12 @@
     </view>
   </view>
 </view>
-
+<!--
 <view class='trailer-list'>
   <view class='title'>预告片</view>
   <video class='trailer-item' wx:for='{{subject.trailer_urls}}' wx:key='index' src="{{item}}" controls></video>
 </view>
-
+ -->
 <view class='comments'>
   <view class='title'>短评({{subject.comments_count}})</view>
   <view class='comments-list'>

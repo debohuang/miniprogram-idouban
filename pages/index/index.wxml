@@ -8,7 +8,7 @@
   </view>
   <scroll-view scroll-x>
     <view class='in-theaters-list'>
-      <view class='in-theaters-item' wx:for='{{inTheaters}}' wx:key='{{index}}' bindtap='toDetail' data-id='{{item.id}}'>
+      <view class='in-theaters-item' wx:for='{{inTheaters}}' wx:key='index' bindtap='toDetail' data-id='{{item.id}}'>
 
         <image lazy-load='true' src='{{item.images.small}}' mode='aspectFill'></image>
         <view class='title'>{{item.title}}</view>
@@ -36,7 +36,7 @@
   </view>
   <scroll-view scroll-x>
     <view class='in-theaters-list'>
-      <view class='in-theaters-item' wx:for='{{comingSoon}}' wx:key='{{index}}' bindtap='toDetail' data-id='{{item.id}}'>
+      <view class='in-theaters-item' wx:for='{{comingSoon}}' wx:key='index' bindtap='toDetail' data-id='{{item.id}}'>
 
         <image lazy-load='true' src='{{item.images.small}}' mode='aspectFill'></image>
         <view class='title'>{{item.title}}</view>
@@ -63,7 +63,7 @@
   </view>
   <scroll-view scroll-x>
     <view class='in-theaters-list'>
-      <view class='in-theaters-item' wx:for='{{top250}}' wx:key='{{index}}' bindtap='toDetail' data-id='{{item.id}}'>
+      <view class='in-theaters-item' wx:for='{{top250}}' wx:key='index' bindtap='toDetail' data-id='{{item.id}}'>
 
         <image lazy-load='true' src='{{item.images.small}}' mode='aspectFill'></image>
         <view class='title'>{{item.title}}</view>
