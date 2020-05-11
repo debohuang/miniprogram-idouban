@@ -68,7 +68,7 @@
   </view>
   <view class='more-comments' bindtap='toMoreComment'>查看更多短评</view>
 </view>
-
+<!-- 
 <view class='reviews'>
   <view class='title'>影评({{subject.reviews_count}})</view>
   <view class='reviews-list'>
@@ -84,3 +84,4 @@
   </view>
   <view class='more-reviews' bindtap='toMoreReview'>查看更多影评</view>
 </view>
+-->
