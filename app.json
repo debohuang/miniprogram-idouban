@@ -8,7 +8,8 @@
     "pages/more/moretop",
     "pages/more/morecomment",
     "pages/more/morereview",
-    "pages/detail/reviewdetail"
+    "pages/detail/reviewdetail",
+    "pages/more/moreTvTop"
   ],
   "window": {
     "backgroundTextStyle": "light",

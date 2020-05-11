@@ -105,6 +105,10 @@
   width: 50rpx;
 }
 
+.top{
+  margin-top: 88rpx;
+}
+
 .search-bar {
   box-sizing: border-box;
   position: fixed;
@@ -115,7 +119,7 @@
   height: 80rpx;
   padding: 10rpx;
   background-color: #eee;
-  text-align: center;
+  text-align: center;  
   box-shadow: 0 10rpx 60rpx rgba(0, 0, 0, .3);
 }
 

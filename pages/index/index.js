@@ -4,9 +4,11 @@ const app = getApp()
 Page({
   data: {
     inTheaters: [],
+    tvTop: [],
     comingSoon: [],
     top250: [],
     inTheatersLoadding: true,
+    tvTopLoadding: true,
     comingSoonLoadding: true,
     top250Lodding: true
   },
@@ -30,6 +32,31 @@ Page({
       .catch(err => {
         console.log(err)
       })
+
+      
+     // 热门电视剧
+    app.douban.findTv()
+    .then(data => {
+      let subjects = data.subject_collection_items
+      for (let subject of subjects) {
+        let average = 0
+        if(subject.rating!=null){
+          average = subject.rating.value
+        }
+        subject.start = this.averageToStars(average)
+        if (subject.title.length > 5)
+          subject.title = subject.title.substring(0, 5) + "..."
+      }
+      this.setData({
+        tvTop: data.subject_collection_items,
+        tvTopLoadding: false
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+
     // 获取即将上映
     app.douban.find('coming_soon')
       .then(data => {
@@ -48,6 +75,7 @@ Page({
       .catch(err => {
         console.log(err)
       })
+
     // 获取top250
     app.douban.find('top250')
       .then(data => {
@@ -102,5 +130,10 @@ Page({
     wx.navigateTo({
       url: '/pages/more/moretop',
     })
-  }
+  },
+  toMoreTvTop(){
+    wx.navigateTo({
+      url: '/pages/more/moreTvTop',
+    })
+  },
 })
