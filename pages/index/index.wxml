@@ -1,6 +1,10 @@
 <import src="../../template/start.wxml" />
+
+<view class="search-bar">
+    <input class="search-txt" placeholder-class="search-txt-plc" bindfocus="viewSearch" placeholder="请输入关键词搜索" type="text"/>
+</view>
 <!-- 正在热映 -->
-<view class='content'>
+<view class='content top'>
   <view class='in-theaters-bar'>
     <view class='title'>正在热映</view>
     <view class='more' bindtap='toMoreInteaters'>更多</view>
@@ -26,6 +30,32 @@
   </view>
 </view>
 
+<!-- 电视剧 -->
+<view class='content'>
+  <view class='in-theaters-bar'>
+    <view class='title'>电视剧</view>
+    <view class='more' bindtap='toMoreTvTop'>更多</view>
+    <image class='arrow-icon' src='/images/arrow.png'></image>
+  </view>
+  <scroll-view scroll-x>
+    <view class='in-theaters-list'>
+      <view class='in-theaters-item' wx:for='{{tvTop}}' wx:key='index' bindtap='toDetail' data-id='{{item.id}}'>
+
+        <image lazy-load='true' src='{{item.cover.url}}' mode='aspectFill'></image>
+        <view class='title'>{{item.title}}</view>
+        <!-- <view class='original_title'>Jurassic World: Fallen Kingdom</view> -->
+        <view class='score-content'>
+          <template is="start" data="{{stars:item.start,score:item.rating.average}}" />
+          <text class='score' wx:if='{{item.rating.average == 0}}'>无</text>
+          <text class='score' wx:else>{{item.rating.average}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='loading' wx:if='{{comingSoonLoadding}}'>
+    <image mode='widthFix' src='../../images/loading.svg'></image>
+  </view>
+</view>
 
 <!-- 即将上映 -->
 <view class='content'>
