@@ -2,14 +2,14 @@
 
 <view class='wapper'>
   <view class='mask'></view>
-  <image class='back-cover' mode='aspectFill' src='{{subject.pic.large}}'></image>
-  <image class='cover' mode='widthFix' src='{{subject.pic.normal}}'></image>
+  <image class='back-cover' mode='aspectFill' src='{{subject.images.large}}'></image>
+  <image class='cover' mode='widthFix' src='{{subject.images.small}}'></image>
   <view class='info'>
     <view>{{subject.title}}</view>
     <view>{{subject.original_title}}</view>
     <view class='rating'>
-      <text class='score' wx:if='{{subject.rating.value == 0}}'>无</text>
-      <text class='score' wx:else>{{subject.rating.value}}</text>
+      <text class='score' wx:if='{{subject.rating.average == 0}}'>无</text>
+      <text class='score' wx:else>{{subject.rating.average}}</text>
       <view>
         <template is="start" data="{{stars:subject.start}}" />
       </view>
@@ -20,7 +20,7 @@
 <view class='introduction'>
   <view class='title'>{{subject.title}}的简介</view>
   <view>
-    {{subject.intro}}
+    {{subject.summary}}
   </view>
   <view class='detail'>
     <view>
@@ -37,7 +37,7 @@
       <text wx:for="{{subject.directors}}" wx:key="index">
         {{item.name}}（导演）
      </text>
-      <view wx:for="{{subject.actors}}" wx:key="index" style='display:inline-block'>
+      <view wx:for="{{subject.casts}}" wx:key="index" style='display:inline-block'>
         <text wx:if='{{index !== 0}}'>/</text> {{item.name}}
       </view>
 
@@ -51,18 +51,18 @@
 </view>
  -->
 <view class='comments'>
-  <view class='title'>短评({{comments.total}})</view>
+  <view class='title'>短评({{subject.comments_count}})</view>
   <view class='comments-list'>
-    <view class='comments-item' wx:for='{{comments.interests}}' wx:key='index'>
+    <view class='comments-item' wx:for='{{comments}}' wx:key='index'>
       <view>
-        <image class='avatar' mode='widthFix' src='{{item.user.avatar}}'></image>
+        <image class='avatar' mode='widthFix' src='{{item.author.avatar}}'></image>
       </view>
       <view style='padding-left: 40rpx'>
         <view class='stars'>
           <template is="start" data="{{stars:item.start}}" />
         </view>
-        <view class='time'>{{item.create_time}}</view>
-        <view class='comment'>{{item.comment}}</view>
+        <view class='time'>{{item.created_at}}</view>
+        <view class='comment'>{{item.content}}</view>
       </view>
     </view>
   </view>

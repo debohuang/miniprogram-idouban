@@ -1,5 +1,6 @@
 const URI = 'https://douban.uieee.com/v2/movie'
 const MOBILE_URI = 'https://m.douban.com/rexxar/api/v2/subject_collection/tv_domestic/items?os=android&for_mobile=1'
+const detail_url = "https://m.douban.com/rexxar/api/v2/"
 const fetch = require('./fetch')
 
 /**
@@ -77,8 +78,16 @@ function findTv(page = 1, count = 20) {
     .then(res => res.data)
 }
 
-
+function findTvDetail(type,id) {
+  return fetchMobileApi(detail_url +type+'/'+ id+'?ck=&for_mobile=1')
+    .then(res => res.data)
+}
+function findTvDetailComment(type,id,page = 1, count = 10) {
+  const params = { start: (page - 1) * count, count: count }
+  return fetchMobileApi(detail_url +type+'/'+ id+'/interests?order_by=hot&ck=&for_mobile=1',params)
+    .then(res => res.data)
+}
 
 // -----------------对接m.douban.com网页接口 end--------------------------
 
-module.exports = { find, findOne, findComments, findReviews, findReview,findTv }
+module.exports = { find, findOne, findComments, findReviews, findReview,findTv,findTvDetail,findTvDetailComment }

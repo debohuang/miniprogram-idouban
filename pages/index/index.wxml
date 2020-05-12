@@ -39,7 +39,7 @@
   </view>
   <scroll-view scroll-x>
     <view class='in-theaters-list'>
-      <view class='in-theaters-item' wx:for='{{tvTop}}' wx:key='index' bindtap='toDetail' data-id='{{item.id}}'>
+      <view class='in-theaters-item' wx:for='{{tvTop}}' wx:key='index' bindtap='toDetail' data-id='{{item.id}}' data-type='tv'>
 
         <image lazy-load='true' src='{{item.cover.url}}' mode='aspectFill'></image>
         <view class='title'>{{item.title}}</view>

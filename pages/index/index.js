@@ -98,9 +98,15 @@ Page({
     
   },
   toDetail(e) {
-    const {id} = e.currentTarget.dataset
+    var data= e.currentTarget.dataset
+    var id = data.id
+    var type= data.type
+    if(type==null){
+      type='movie'
+    }
+    console.log('id='+id)
     wx.navigateTo({
-      url: `/pages/detail/detail?id=${id}`,
+      url: `/pages/detail/detail?id=${id}&type=${type}`,
     })
   },
   averageToStars(average) {

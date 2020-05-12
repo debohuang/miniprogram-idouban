@@ -1,17 +1,17 @@
 <import src="../../template/start.wxml" />
 <view class='comments'>
   <view class='comments-item' wx:for='{{comments}}' wx:key='index'>
-    <image class='avatar' src='{{item.author.avatar}}' mode='widthFix'></image>
+    <image class='avatar' src='{{item.user.avatar}}' mode='widthFix'></image>
     <view class='content'>
       <view class='content-name'>
-        <text class='author-name'>{{item.author.name}}</text>
+        <text class='author-name'>{{item.user.name}}</text>
         <template is="start" data="{{stars:item.stars}}" />
       </view>
       <view class='content-time'>
-      {{item.created_at}}
+      {{item.create_time}}
       </view>
       <view class='content-comment'>
-      {{item.content}}
+      {{item.comment}}
       </view>
     </view>
   </view>
