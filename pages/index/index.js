@@ -142,4 +142,10 @@ Page({
       url: '/pages/more/moreTvTop',
     })
   },
+	viewSearch: function() {
+		wx.navigateTo({
+			url: '../search/search'
+		})
+	}
+
 })

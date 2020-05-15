@@ -44,6 +44,7 @@ Page({
         }
         comment.start = this.averageToStars(rete)
       }
+      // let comments = subject
       this.setData({
         comments: this.data.comments.concat(comments),
         start: (this.data.page + 1)*data.count,

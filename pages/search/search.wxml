@@ -1,0 +1,35 @@
+<import src="../../template/start.wxml" />
+
+<view class="search-bar">
+       <input class="search-txt" name="keyword" placeholder-class="search-txt-plc" bindinput="search" placeholder="请输入关键词搜索" type="text"  value="{{searchValue}}"/>
+      <block wx:if="{{showDelete}}">
+        <text class="search-delete" bindtap="bindSearchDelete">x</text>
+      </block>
+</view>
+<view class="film">
+    <ad unit-id="adunit-b84d044e3e4182be" ad-type="video" ad-theme="white"></ad>
+    <block wx:for="{{resultData}}" wx:for-index="filmIndex" wx:for-item="filmItem" wx:key="film">
+        <view data-id="{{filmItem.id}}" class="film-item" catchtap="toDetail">
+            <view class="film-cover">
+                <image src="{{filmItem.children[1].attributes.src}}" class="film-cover-img"></image>
+                <view class="film-rating">
+                        <block wx:if="{{filmItem.children[3].children[3].children[3].children[0].content == null}}">
+                            暂无评分
+                        </block>
+                        <block wx:else>
+                           {{filmItem.children[3].children[3].children[3].children[0].content}}分
+                        </block>  
+                </view>
+            </view>
+            <view class="file-intro">
+                <view class="film-title">{{filmItem.children[3].children[1].children[0].content}}</view>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{hasMore}}">
+        <view class="loading-tip">拼命加载中…</view>
+    </block>
+    <block wx:else>
+        <view class="loading-tip">没有更多内容了</view>
+    </block>
+</view>

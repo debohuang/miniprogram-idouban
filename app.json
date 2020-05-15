@@ -9,12 +9,13 @@
     "pages/more/morecomment",
     "pages/more/morereview",
     "pages/detail/reviewdetail",
-    "pages/more/moreTvTop"
+    "pages/more/moreTvTop",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Douban",
+    "navigationBarTitleText": "追剧吧",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

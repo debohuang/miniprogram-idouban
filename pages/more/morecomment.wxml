@@ -5,7 +5,9 @@
     <view class='content'>
       <view class='content-name'>
         <text class='author-name'>{{item.user.name}}</text>
-        <template is="start" data="{{stars:item.stars}}" />
+        <view class='stars'>
+          <template is="start" data="{{stars:item.start}}" />
+        </view>
       </view>
       <view class='content-time'>
       {{item.create_time}}

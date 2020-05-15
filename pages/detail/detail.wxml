@@ -18,7 +18,7 @@
 </view>
 
 <view class='introduction'>
-  <view class='title'>{{subject.title}}的简介</view>
+  <view class='title'>{{subject.title}}的简介 </view>
   <view>
     {{subject.intro}}
   </view>
@@ -50,7 +50,9 @@
   <video class='trailer-item' wx:for='{{subject.trailer_urls}}' wx:key='index' src="{{item}}" controls></video>
 </view>
  -->
+ <ad unit-id="adunit-a29067faa49ea785" ad-type="video" ad-theme="white"></ad>
 <view class='comments'>
+  <button bindtap='copyBtn'>复制链接</button>
   <view class='title'>短评({{comments.total}})</view>
   <view class='comments-list'>
     <view class='comments-item' wx:for='{{comments.interests}}' wx:key='index'>
