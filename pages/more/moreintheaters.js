@@ -31,11 +31,42 @@ Page({
     const page = this.data.page
     const count = this.data.count
     // 获取正在热映
-    app.douban.find('in_theaters', page, count)
+    // app.douban.find('in_theaters', page, count)
+    //   .then(data => {
+    //     let subjects = data.subjects
+    //     for (let subject of subjects) {
+    //       let average = subject.rating.average
+    //       subject.start = this.averageToStars(average)
+    //       if (subject.title.length > 5)
+    //         subject.title = subject.title.substring(0, 5) + "..."
+    //     }
+    //     let list = []
+    //     for (let i = 0; i < subjects.length; i += 3) {
+    //       list.push([subjects[i],
+    //         subjects[i + 1] ? subjects[i + 1] : null,
+    //         subjects[i + 2] ? subjects[i + 2] : null
+    //       ])
+    //     }
+    //     this.setData({
+    //       subjects: this.data.subjects.concat(list),
+    //       page: this.data.page + 1,
+    //       total: data.total
+    //     })
+    //     if (this.data.subjects.length * 3 >= this.data.total) {
+    //       this.setData({
+    //         nomore: true
+    //       })
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+
+      app.douban.findMovie('movie','热门','recommend', page, count)
       .then(data => {
         let subjects = data.subjects
         for (let subject of subjects) {
-          let average = subject.rating.average
+          let average = subject.rate
           subject.start = this.averageToStars(average)
           if (subject.title.length > 5)
             subject.title = subject.title.substring(0, 5) + "..."
@@ -52,15 +83,18 @@ Page({
           page: this.data.page + 1,
           total: data.total
         })
-        if (this.data.subjects.length * 3 >= this.data.total) {
+        if (this.data.page >50) {
           this.setData({
             nomore: true
           })
         }
+
       })
       .catch(err => {
         console.log(err)
       })
+
+
   },
   averageToStars(average) {
     let start = []
@@ -78,7 +112,7 @@ Page({
   toDetail(e) {
     const { id } = e.currentTarget.dataset
     wx.navigateTo({
-      url: `/pages/detail/detail?id=${id}`,
+      url: `/pages/detail/detail?id=${id}&type=movie`,
     })
   }
 

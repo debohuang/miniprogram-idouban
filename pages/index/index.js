@@ -9,17 +9,35 @@ Page({
     top250: [],
     inTheatersLoadding: true,
     tvTopLoadding: true,
-    comingSoonLoadding: true,
+    comingSoonLoadding: false,
     top250Lodding: true
   },
   onLoad() {
     wx.showNavigationBarLoading()
     // 获取正在热映
-    app.douban.find('in_theaters')
+    // app.douban.find('in_theaters')
+    //   .then(data => {
+    //     let subjects = data.subjects
+    //     for (let subject of subjects) {
+    //       let average = subject.rating.average
+    //       subject.start = this.averageToStars(average)
+    //       if (subject.title.length >5)
+    //         subject.title = subject.title.substring(0,5) + "..."
+    //     }
+    //     this.setData({
+    //       inTheaters: data.subjects,
+    //       inTheatersLoadding: false
+    //     })
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+
+      app.douban.findMovie('movie')
       .then(data => {
         let subjects = data.subjects
         for (let subject of subjects) {
-          let average = subject.rating.average
+          let average = subject.rate
           subject.start = this.averageToStars(average)
           if (subject.title.length >5)
             subject.title = subject.title.substring(0,5) + "..."
@@ -28,11 +46,11 @@ Page({
           inTheaters: data.subjects,
           inTheatersLoadding: false
         })
+
       })
       .catch(err => {
         console.log(err)
       })
-
       
      // 热门电视剧
     app.douban.findTv()
@@ -58,30 +76,49 @@ Page({
 
 
     // 获取即将上映
-    app.douban.find('coming_soon')
-      .then(data => {
-        let subjects = data.subjects
-        for (let subject of subjects) {
-          let average = subject.rating.average
-          subject.start = this.averageToStars(average)
-          if (subject.title.length > 5)
-            subject.title = subject.title.substring(0, 5) + "..."
-        }
-        this.setData({
-          comingSoon: data.subjects,
-          comingSoonLoadding: false
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    // app.douban.find('coming_soon')
+    //   .then(data => {
+    //     let subjects = data.subjects
+    //     for (let subject of subjects) {
+    //       let average = subject.rating.average
+    //       subject.start = this.averageToStars(average)
+    //       if (subject.title.length > 5)
+    //         subject.title = subject.title.substring(0, 5) + "..."
+    //     }
+    //     this.setData({
+    //       comingSoon: data.subjects,
+    //       comingSoonLoadding: false
+    //     })
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
 
     // 获取top250
-    app.douban.find('top250')
+    // app.douban.find('top250')
+    //   .then(data => {
+    //     let subjects = data.subjects
+    //     for (let subject of subjects) {
+    //       let average = subject.rating.average
+    //       subject.start = this.averageToStars(average)
+    //       if (subject.title.length > 5)
+    //         subject.title = subject.title.substring(0, 5) + "..."
+    //     }
+    //     this.setData({
+    //       top250: data.subjects,
+    //       top250Lodding: false
+    //     })
+    //     wx.hideNavigationBarLoading()
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+
+      app.douban.findMovie('movie','豆瓣高分','rank')
       .then(data => {
         let subjects = data.subjects
         for (let subject of subjects) {
-          let average = subject.rating.average
+          let average = subject.rate
           subject.start = this.averageToStars(average)
           if (subject.title.length > 5)
             subject.title = subject.title.substring(0, 5) + "..."
@@ -91,11 +128,13 @@ Page({
           top250Lodding: false
         })
         wx.hideNavigationBarLoading()
+
       })
       .catch(err => {
         console.log(err)
       })
-    
+
+
   },
   toDetail(e) {
     var data= e.currentTarget.dataset
@@ -144,7 +183,7 @@ Page({
   },
 	viewSearch: function() {
 		wx.navigateTo({
-			url: '../search/search'
+			url: '/pages/search/search'
 		})
 	}
 

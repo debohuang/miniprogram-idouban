@@ -81,7 +81,7 @@ Page({
   toDetail(e) {
     const { id } = e.currentTarget.dataset
     wx.navigateTo({
-      url: `/pages/detail/detail?id=${id}`,
+      url: `/pages/detail/detail?id=${id}&type=tv`,
     })
   }
 

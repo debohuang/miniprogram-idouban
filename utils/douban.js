@@ -1,5 +1,6 @@
 const URI = 'https://douban.uieee.com/v2/movie'
 const MOBILE_URI = 'https://m.douban.com/rexxar/api/v2/subject_collection/tv_domestic/items?os=android&for_mobile=1'
+const movie_douban= 'https://movie.douban.com/j/search_subjects?sort=recommend'
 const detail_url = "https://m.douban.com/rexxar/api/v2/"
 const search_url ="https://m.douban.com/j/search/"
 const fetch = require('./fetch')
@@ -95,7 +96,16 @@ function findTvSerach(searchKey,page = 0,t='movie') {
     .then(res => res.data)
 }
 
+function findMovie( q_type,tag='热门',sort='recommend',page=0,count=20) {
+  const params = { page_start: (page - 1) * count, type: q_type, sort:sort,page_limit:count,tag:tag}
+  return fetchMobileApi(movie_douban, params)
+    .then(res => res.data)
+}
+
+
+
+
 // -----------------对接m.douban.com网页接口 end--------------------------
 
 
-module.exports = { find, findOne, findComments, findReviews, findReview,findTv,findTvDetail,findTvDetailComment,findTvSerach }
+module.exports = { find, findOne, findComments, findReviews, findReview,findTv,findTvDetail,findTvDetailComment,findTvSerach,findMovie}
